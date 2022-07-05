@@ -1,0 +1,589 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #141f26;
+}
+
+/* -----NAV----- */
+
+header {
+  background-color: #141f26;
+}
+
+a.logo {
+  width: 100px;
+  height: 100px;
+  background-image: url(/Icones/Logo_site.png);
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.navig {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+}
+
+nav a {
+  color: #9ed0eb;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+  border-radius: 3px;
+  background-color: #141f269a;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  border: solid 1px rgba(255, 255, 255, 0.25);
+  border-right: solid 1px rgba(255, 255, 255, 0.1);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+  width: 180px;
+  height: 50px;
+  overflow: hidden;
+}
+
+nav a:hover {
+  animation: anim_nav 0.2s linear forwards;
+}
+@keyframes anim_nav {
+  0% {
+  }
+
+  100% {
+    width: 200px;
+    height: 70px;
+    font-size: 20px;
+  }
+}
+
+nav a:not(:hover) {
+  animation: notanim_nav 0.5s linear forwards;
+}
+@keyframes notanim_nav {
+  0% {
+    width: 200px;
+    height: 70px;
+    font-size: 20px;
+  }
+  30% {
+    width: 220px;
+    height: 90px;
+    font-size: 25px;
+  }
+
+  100% {
+  }
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  background: linear-gradient(to right, #fff, #ffffffc5, #6a6c6d7c);
+  width: 15px;
+  height: 150px;
+  top: -50px;
+  right: 0;
+  transform: translateX(300%) rotate(-30deg);
+  filter: blur(0.5px);
+}
+
+nav a:hover::after {
+  animation: anim_light 0.2s linear forwards;
+}
+@keyframes anim_light {
+  0% {
+    transform: translateX(300%) rotate(-30deg);
+  }
+  100% {
+    transform: translateX(-1800%) rotate(-30deg);
+  }
+}
+
+nav a:not(:hover)::after {
+  animation: notanim_light 0.5s linear forwards;
+}
+@keyframes notanim_light {
+  0% {
+    transform: translateX(-1800%) rotate(-30deg);
+  }
+  50% {
+    transform: translateX(-1800%) rotate(-30deg);
+  }
+  100% {
+    transform: translateX(300%) rotate(-30deg);
+  }
+}
+
+/* BARRE DE RECHERCHE */
+
+.navig .search-container {
+  position: absolute;
+  height: 100px;
+  width: 15%;
+  max-width: 200px;
+  top: 0;
+  right: 40px;
+}
+
+.navig .search-container .search-inputBox {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  color: #9ed0eb;
+  top: calc(50% - 20px);
+  right: 0;
+}
+
+.navig .search-container .search-inputBox input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  font-size: 15px;
+  padding: 0 10px;
+  z-index: 1;
+  color: #141f26;
+  text-transform: none;
+}
+
+.navig .search-container .line-search {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #9ed0eb;
+  transition: 0.5s;
+  border-radius: 2px;
+  pointer-events: none;
+}
+.navig .search-container .search-inputBox input:focus ~ .line-search,
+.navig .search-container .search-inputBox input:valid ~ .line-search {
+  height: 100%;
+}
+
+.navig .search-container .search-inputBox input:focus ~ div::before,
+.navig .search-container .search-inputBox input:valid ~ div::before {
+  background-color: #141f26;
+}
+.navig .search-container .search-inputBox input:focus ~ div::after,
+.navig .search-container .search-inputBox input:valid ~ div::after {
+  border-color: #141f26;
+}
+
+.navig .search-container .search-action {
+  min-width: 20px;
+  min-height: 20px;
+  position: absolute;
+}
+
+/* LOUPE */
+
+.navig .search-container .search-action {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  height: 30px;
+  width: 30px;
+}
+
+.navig .search-container .search-action::after {
+  content: "";
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: solid #9ed0eb;
+  top: 0;
+}
+
+.navig .search-container .search-action::before {
+  content: "";
+  position: absolute;
+  height: 50%;
+  width: 3px;
+  border-radius: 2px;
+  background-color: #9ed0eb;
+  bottom: 0;
+  right: 6px;
+  transform: rotate(-45deg);
+}
+
+/* -----------------SECTION1----------------------- */
+
+section.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 95vh;
+  background-color: #141f26;
+  padding: 10% 0;
+}
+
+/* section.main::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  transform: translate(-420px, -180px);
+  background: linear-gradient(#9ed0eb, #5b38a6);
+}
+section.main::after {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  transform: translate(400px, 180px);
+  background: linear-gradient(#5b38a6, #9ed0eb);
+} */
+
+.container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1000px;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: solid 1px rgba(255, 255, 255, 0.25);
+  border-right: solid 1px rgba(255, 255, 255, 0.1);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  backdrop-filter: blur(25px);
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  transform: skewX(-15deg);
+}
+
+.container h2 {
+  width: 100%;
+  text-align: center;
+  color: #9ed0eb;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.container p {
+  text-align: center;
+  color: #9ed0eb;
+  margin-bottom: 10%;
+}
+
+.container .row100 {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.container .row100 .col {
+  position: relative;
+  width: 100%;
+  padding: 0 10px;
+  margin: 30px 0 20px;
+}
+
+.container .row100 .col .inputBox {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  color: #9ed0eb;
+}
+
+.container .row100 .col .inputBox input,
+.container .row100 .col .inputBox textarea {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  font-size: 15px;
+  padding: 0 10px;
+  z-index: 1;
+  color: #141f26;
+  text-transform: none;
+}
+
+.container .row100 .col .inputBox .text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 40px;
+  font-size: 18px;
+  padding: 0 10px;
+  display: block;
+  transition: 0.5s;
+  pointer-events: none;
+}
+.container .row100 .col .inputBox input:focus + .text,
+.container .row100 .col .inputBox input:valid + .text,
+.container .row100 .col .inputBox textarea:focus + .text,
+.container .row100 .col .inputBox textarea:valid + .text {
+  top: -35px;
+  left: -10px;
+}
+
+.container .row100 .col .inputBox .line_1 {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #9ed0eb;
+  transition: 0.5s;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.container .row100 .col .inputBox input:focus ~ .line_1,
+.container .row100 .col .inputBox input:valid ~ .line_1 {
+  height: 100%;
+}
+
+.container .row100 .col .inputBox.textarea {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  padding: 10px 0;
+}
+
+.container .row100 .col .inputBox textarea:focus ~ .line_1,
+.container .row100 .col .inputBox textarea:valid ~ .line_1 {
+  height: 100%;
+}
+
+.container .row100 .col input[type="submit"] {
+  border: none;
+  padding: 10px 40px;
+  cursor: pointer;
+  outline: none;
+  background-color: #9ed0eb;
+  color: #141f26;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 2px;
+}
+
+/* -------SECTION2------- */
+
+section.bureaux {
+  width: 100%;
+  height: 120vh;
+  background-color: #141f26;
+}
+
+section.bureaux .glitch {
+  position: relative;
+}
+
+section.bureaux h2 {
+  text-align: center;
+  color: #9ed0eb;
+  padding-bottom: 8%;
+  font-size: 40px;
+  padding-bottom: 100px;
+}
+
+section.bureaux .windows {
+  display: flex;
+  justify-content: space-around;
+}
+
+section.bureaux .windows > a {
+  position: relative;
+  width: 400px;
+  height: 700px;
+  border-radius: 25px;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: solid 1px rgba(255, 255, 255, 0.25);
+  border-right: solid 1px rgba(255, 255, 255, 0.1);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+  background-color: #141f26;
+  text-decoration: none;
+}
+
+section.bureaux .windows > a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 25px;
+  background-color: #141f26;
+  opacity: 40%;
+}
+
+section.bureaux .windows .paris::before {
+  background-image: url(/image/paris.jpg);
+}
+section.bureaux .windows .geneve::before {
+  background-image: url(/image/geneve.jpg);
+}
+section.bureaux .windows .paris::before,
+section.bureaux .windows .geneve::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 25px;
+  background-size: cover;
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
+}
+
+section.bureaux .windows .paris:hover::before,
+section.bureaux .windows .geneve:hover::before {
+  animation: anim_paris 0.2s linear infinite;
+}
+@keyframes anim_paris {
+  0% {
+    background-position: 0 0;
+    filter: hue-rotate(0deg);
+  }
+  10% {
+    background-position: 5px 0;
+  }
+  20% {
+    background-position: -5px 0;
+  }
+  30% {
+    background-position: 15px 0;
+  }
+  40% {
+    background-position: 5px 0;
+  }
+  50% {
+    background-position: -25px 0;
+  }
+  60% {
+    background-position: -30px 0;
+  }
+  70% {
+    background-position: 0 -20px;
+  }
+  80% {
+    background-position: -40px -10px;
+  }
+  81% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 0;
+    filter: hue-rotate(360deg);
+  }
+}
+
+section.bureaux .windows .paris {
+  background-image: url(/image/paris.jpg);
+  background-size: cover;
+}
+
+section.bureaux .windows .geneve {
+  background-image: url(/image/geneve.jpg);
+  background-size: cover;
+}
+
+section.bureaux .windows a h3,
+.text_p {
+  position: relative;
+  padding: 20% 20% 10%;
+  color: #9ed0eb;
+  z-index: 10;
+  font-size: 25px;
+}
+
+section.bureaux .windows a p {
+  text-transform: none;
+  padding: 2px;
+}
+
+/* ------SECTION 3------ */
+
+section.infos {
+  padding-top: 15px;
+  width: 100%;
+  height: 700px;
+  display: flex;
+  background-color: #5b38a6;
+  position: relative;
+}
+
+section.infos .text_info {
+  width: 45%;
+  height: 670px;
+  background-color: #9ed0eb;
+}
+
+section.infos .text_info .max-case {
+  padding: 10% 0 0 5%;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+section.infos .text_info .max-case h2 {
+  padding-left: 13.5%;
+}
+
+section.infos .text_info .max-case .row-case {
+  display: flex;
+  justify-content: space-around;
+}
+
+section.infos .text_info .max-case .row-case div h3 {
+  padding-bottom: 20px;
+  font-size: 15px;
+}
+
+section.infos .text_info .max-case .row-case a {
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: none;
+}
+
+section.infos .img_bureau {
+  overflow: hidden;
+  width: 55%;
+  height: 670px;
+}
+
+section.infos .text_info .max-case .row-case div h3.title_eq {
+  margin-bottom: 20px;
+  font-size: 20px;
+}

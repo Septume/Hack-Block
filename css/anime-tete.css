@@ -1,0 +1,162 @@
+@keyframes mouv_HG {
+    0% {
+    }
+    50% {
+      transform: translate(-15px, -15px);
+    }
+    100% {
+    }
+  }
+  @keyframes mouv_HD {
+    0% {
+    }
+    50% {
+      transform: translate(15px, -15px);
+    }
+    100% {
+    }
+  }
+  @keyframes mouv_BG {
+    0% {
+    }
+    50% {
+      transform: translate(-15px, 15px);
+    }
+    100% {
+    }
+  }
+  @keyframes mouv_BD {
+    0% {
+    }
+    50% {
+      transform: translate(15px, 15px);
+    }
+    100% {
+    }
+  }
+
+  /* -------mouv Exterieur-------- */
+
+  @keyframes mouv_haut1 {
+    0%{
+    }
+    50% {
+      transform: translate(-25px, -35px);
+    }
+    100%{
+    }
+  }
+  @keyframes mouv_haut2 {
+    0%{
+    }
+    50% {
+      transform: translate(25px, -35px);
+    }
+    100%{
+    
+    }
+  }
+  @keyframes mouv_bas1 {
+    0%{
+    }
+    50% {
+      transform: translate(-25px, 35px);
+    }
+    100%{
+    
+    }
+  }
+  @keyframes mouv_bas2 {
+    0%{
+    }
+    50% {
+      transform: translate(25px, 35px);
+    }
+    100%{
+    
+    }
+  }
+
+    /* -------mouv interieur-------- */
+
+    @keyframes mouv_haut1-3 {
+      0%{
+      }
+      50% {
+        transform: translate(-35px, 15px);
+      }
+      100%{
+      }
+    }
+    @keyframes mouv_haut2-3 {
+      0%{
+      }
+      50% {
+        transform: translate(35px, 15px);
+      }
+      100%{
+      
+      }
+    }
+    @keyframes mouv_bas1-3 {
+      0%{
+      }
+      50% {
+        transform: translate(-35px, -15px);
+      }
+      100%{
+      
+      }
+    }
+    @keyframes mouv_bas2-3 {
+      0%{
+      }
+      50% {
+        transform: translate(35px, -15px);
+      }
+      100%{
+      
+      }
+    }
+
+      /* -------mouv milieu-------- */
+
+  @keyframes mouv_haut1-2 {
+    0%{
+    }
+    50% {
+      transform: translate(-25px, -25px);
+    }
+    100%{
+    }
+  }
+  @keyframes mouv_haut2-2 {
+    0%{
+    }
+    50% {
+      transform: translate(25px, -25px);
+    }
+    100%{
+    
+    }
+  }
+  @keyframes mouv_bas1-2 {
+    0%{
+    }
+    50% {
+      transform: translate(-25px, 25px);
+    }
+    100%{
+    
+    }
+  }
+  @keyframes mouv_bas2-2 {
+    0%{
+    }
+    50% {
+      transform: translate(25px, 25px);
+    }
+    100%{
+    
+    }
+  }

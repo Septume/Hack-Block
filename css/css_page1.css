@@ -1,0 +1,698 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+}
+a {
+  text-decoration: none;
+}
+
+header {
+  width: 100%;
+  height: 100vh;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #141f26;
+}
+
+#vid-ping {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -10;
+}
+
+/* -----NAV----- */
+
+a.logo {
+  width: 100px;
+  height: 100px;
+  background-image: url(/Icones/Logo_site.png);
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #141f269a;
+  border-right: solid 1px rgba(255, 255, 255, 0.1);
+
+}
+
+.navig {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+}
+
+nav a {
+  color: #9ed0eb;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+  border-radius: 3px;
+  background-color: #141f269a;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  border: solid 1px rgba(255, 255, 255, 0.25);
+  border-right: solid 1px rgba(255, 255, 255, 0.1);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+  width: 180px;
+  height: 50px;
+  overflow: hidden;
+}
+
+nav a:hover {
+  animation: anim_nav 0.2s linear forwards;
+}
+@keyframes anim_nav {
+  0% {
+  }
+
+  100% {
+    width: 200px;
+    height: 70px;
+    font-size: 20px;
+  }
+}
+
+nav a:not(:hover) {
+  animation: notanim_nav 0.5s linear forwards;
+}
+@keyframes notanim_nav {
+  0% {
+    width: 200px;
+    height: 70px;
+    font-size: 20px;
+  }
+  30% {
+    width: 220px;
+    height: 90px;
+    font-size: 25px;
+  }
+
+  100% {
+  }
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  background: linear-gradient(to right, #fff, #ffffffc5, #6a6c6d7c);
+  width: 15px;
+  height: 150px;
+  top: -50px;
+  right: 0;
+  transform: translateX(300%) rotate(-30deg);
+  filter: blur(0.5px);
+}
+
+nav a:hover::after {
+  animation: anim_light 0.2s linear forwards;
+}
+@keyframes anim_light {
+  0% {
+    transform: translateX(300%) rotate(-30deg);
+  }
+  100% {
+    transform: translateX(-1800%) rotate(-30deg);
+  }
+}
+
+nav a:not(:hover)::after {
+  animation: notanim_light 0.5s linear forwards;
+}
+@keyframes notanim_light {
+  0% {
+    transform: translateX(-1800%) rotate(-30deg);
+  }
+  50% {
+    transform: translateX(-1800%) rotate(-30deg);
+  }
+  100% {
+    transform: translateX(300%) rotate(-30deg);
+  }
+}
+
+/* BARRE DE RECHERCHE */
+
+.navig .search-container {
+  position: absolute;
+  height: 100px;
+  width: 15%;
+  max-width: 200px;
+  top: 0;
+  right: 40px;
+}
+
+.navig .search-container .search-inputBox {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  color: #9ed0eb;
+  top: calc(50% - 20px);
+  right: 0;
+}
+
+.navig .search-container .search-inputBox input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  font-size: 15px;
+  padding: 0 10px;
+  z-index: 1;
+  color: #141f26;
+  text-transform: none;
+}
+
+.navig .search-container .line-search {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #9ed0eb;
+  transition: 0.5s;
+  border-radius: 2px;
+  pointer-events: none;
+}
+.navig .search-container .search-inputBox input:focus ~ .line-search,
+.navig .search-container .search-inputBox input:invalid ~ .line-search {
+  height: 100%;
+}
+
+.navig .search-container .search-inputBox input:focus ~ div::before,
+.navig .search-container .search-inputBox input:invalid ~ div::before {
+  background-color: #141f26;
+}
+.navig .search-container .search-inputBox input:focus ~ div::after,
+.navig .search-container .search-inputBox input:invalid ~ div::after {
+  border-color: #141f26;
+}
+
+.navig .search-container .search-action {
+  min-width: 20px;
+  min-height: 20px;
+  position: absolute;
+}
+
+/* LOUPE */
+
+.navig .search-container .search-action {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  height: 30px;
+  width: 30px;
+}
+
+.navig .search-container .search-action::after {
+  content: "";
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: solid #9ed0eb;
+  top: 0;
+}
+
+.navig .search-container .search-action::before {
+  content: "";
+  position: absolute;
+  height: 50%;
+  width: 3px;
+  border-radius: 2px;
+  background-color: #9ed0eb;
+  bottom: 0;
+  right: 6px;
+  transform: rotate(-45deg);
+}
+
+/* -----VERTICAL----- */
+
+.vertical {
+  width: 100px;
+  height: calc(100vh - 100px);
+  background-color: #141f269a;
+  border-right: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.vert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+  height: calc(100vh - 100px);
+  padding: 20% 0;
+}
+.vertical :nth-child(5) {
+  height: 10px;
+  width: 10px;
+}
+
+.vertical span p {
+  color: #9ed0eb;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+header .titre > div:nth-child(1) {
+  position: absolute;
+  top: 100px;
+  left: 99px;
+  height: 200px;
+  width: 550px;
+  border-radius: 0 10px 10px 0;
+  overflow: hidden;
+}
+
+header .titre .h1-mod {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #141f269a;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: solid 1px rgba(255, 255, 255, 0.25);
+  border-right: solid 1px rgba(255, 255, 255, 0.1);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+  border-radius: 0 10px 10px 0;
+  transform: translateX(-100%);
+  animation: apparition 20s infinite linear;
+  animation-delay: 0.5s;
+}
+
+@keyframes apparition {
+    0% {
+      transform: translateX(-100%);
+    }
+    55% {
+      transform: translateX(-100%);
+    }
+    57.5% {
+      transform: translateX(0%);
+    }
+    95%{
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+header .titre .h1-mod::after {
+content: '';
+position: absolute;
+height: 100%;
+width: 2px;
+background-color: #141f26ee;
+top: 0;
+left: -1px;
+}
+
+header .titre .h1-mod h1 {
+  padding: 20px 50px;
+  font-size: 50px;
+ color: #9ed0eb;
+}
+
+header .titre .h1-mod h2 {
+  padding: 5px 60px;
+ color: #9ed0eb;
+}
+
+/* -----SECTION 2----- */
+section.one {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  background-color: #141f26;
+  color: #9ed0eb;
+  padding-bottom: 5%;
+  padding: 0 1% 5%;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: solid 1px rgba(255, 255, 255, 0.25);
+  border-right: solid 1px rgba(255, 255, 255, 0.1);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.log1 {
+  background-image: url(/Icones/virus.png);
+  height: 200px;
+  width: 200px;
+  background-size: cover;
+  display: inline-block;
+}
+.log2 {
+  background-image: url(/Icones/Skull.png);
+  height: 200px;
+  width: 200px;
+  background-size: cover;
+  display: inline-block;
+}
+.log3 {
+  background-image: url(/Icones/fichier.png);
+  height: 200px;
+  width: 200px;
+  background-size: cover;
+  display: inline-block;
+}
+
+section.one p {
+  text-transform: lowercase;
+}
+
+/* ----- SECTION 3----- */
+
+section.two {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+#vid-tete {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+  z-index: -50;
+}
+
+/* ---------ZONE 1------ */
+.all > div {
+  position: absolute;
+  width: 35%;
+  height: 40vh;
+}
+
+.all .HG {
+  top: 5%;
+  left: 2%;
+}
+
+.all .HD {
+  top: 3%;
+  right: 6%;
+}
+
+.all .BG {
+  bottom: 8%;
+  left: 5%;
+}
+
+.all .BD {
+  bottom: 5%;
+  right: 3%
+}
+
+/* ------ZONE 2 ----- */
+
+.all div > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* GROS CERCLES */
+
+.all div a {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px ;
+  border-radius: 50%;
+  box-shadow: 0 0 5px ;
+}
+
+.all div h2 a {
+  font-size: 15px;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.all div div a:hover::after,
+.all div div a:hover::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: solid 1px #bf500f;;
+  z-index: -1 ;
+  animation: 1s jiggle_pt infinite;
+}
+.all div div a:hover::after {
+  border: solid 1px #f2ce1b;
+  animation: .5s jiggle_pt infinite;
+}
+
+@keyframes jiggle_pt {
+  0%{
+    transform: translate(-2px, -2px);
+  }
+  14%{
+    transform: translate(0px, -2px);
+  }
+  28%{
+    transform: translate(2px, -2px);
+  }
+  42%{
+    transform: translate(2px, 0px);
+  }
+  57%{
+    transform: translate(2px, 2px);
+  }
+  71%{
+    transform: translate(0px, 2px);
+  }
+  85%{
+    transform: translate(-2px, 2px);
+  }
+  100%{
+    transform: translate(-2px, 0px);
+  }
+}
+
+.all div h2 a:hover::after,
+.all div h2 a:hover::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: solid 1px #bf500f;;
+  z-index: -1 ;
+  animation: 1s jiggle_gr infinite;
+}
+.all div h2 a:hover::after {
+  border: solid 1px #f2ce1b;
+  animation: .5s jiggle_gr infinite;
+}
+
+@keyframes jiggle_gr {
+  0%{
+    transform: translate(-5px, -5px);
+  }
+  14%{
+    transform: translate(0px, -5px);
+  }
+  28%{
+    transform: translate(5px, -5px);
+  }
+  42%{
+    transform: translate(5px, 0px);
+  }
+  57%{
+    transform: translate(5px, 5px);
+  }
+  71%{
+    transform: translate(0px, 5px);
+  }
+  85%{
+    transform: translate(-5px, 5px);
+  }
+  100%{
+    transform: translate(-5px, 0px);
+  }
+}
+
+
+.all .HG h2 a {
+  bottom: 75px;
+  right: 0;
+  color: #d96e11;
+  animation: 6s linear infinite alternate mouv_HG;
+  animation-delay: 1s;
+}
+
+.all .HD h2 a {
+  bottom: 75px;
+  left: 0;
+  color: #f2ea79;
+  animation: 6s linear infinite alternate mouv_HD;
+  animation-delay: 1s;
+}
+
+.all .BG h2 a {
+  top: 75px;
+  right: 0;
+  color: #f2ce1b;
+  animation: 6s linear infinite alternate mouv_BG;
+  animation-delay: 1s;
+}
+.all .BD h2 a {
+  top: 75px;
+  left: 0;
+  color: #bf500f;
+  animation: 6s linear infinite alternate mouv_BD;
+  animation-delay: 1s;
+}
+
+/* -----PETIT CERCLE----- */
+
+.all div div a:not(h2 > a) {
+  width: 80px;
+  height: 80px;
+  font-size: 10px;
+}
+
+
+  .all .HG .HG-sec a:not(h2 > a){
+    animation: 6s linear infinite alternate mouv_HG;
+    animation-delay: 1s;
+  }
+  .all .HD .HD-sec a:not(h2 > a){
+    animation: 6s linear infinite alternate mouv_HD;
+    animation-delay: 1s;
+  }
+  .all .BG .BG-sec a:not(h2 > a){
+    animation: 6s linear infinite alternate mouv_BG;
+    animation-delay: 1s;
+  }
+  .all .BD .BD-sec a:not(h2 > a){
+    animation: 6s linear infinite alternate mouv_BD;
+    animation-delay: 1s;
+  }
+
+.all .HG .HG-sec a:nth-child(2) {
+  color: #d96e11;
+  top: 50px;
+  left: 50%;
+  animation: 6s linear infinite alternate mouv_haut1;
+  animation-delay: 1s;
+}
+
+.all .HG .HG-sec a:nth-child(3) {
+  color: #d96e11;
+  top: 100px;
+  left: 0;
+  animation: 6s linear infinite alternate mouv_haut1-2;
+  animation-delay: 1s;
+}
+.all .HG .HG-sec a:nth-child(4) {
+  color: #d96e11;
+  bottom: 50px;
+  left: 100px;
+  animation: 6s linear infinite alternate mouv_haut1-3;
+  animation-delay: 1s;
+}
+
+.all .HD .HD-sec a:nth-child(2) {
+  color: #f2ea79;
+  top: 50px;
+  right: 50%;
+  animation: 6s linear infinite alternate mouv_haut2;
+  animation-delay: 1s;
+}
+
+.all .HD .HD-sec a:nth-child(3) {
+  color: #f2ea79;
+  top: 100px;
+  right: 0;
+  animation: 6s linear infinite alternate mouv_haut2-2;
+  animation-delay: 1s;
+}
+.all .HD .HD-sec a:nth-child(4) {
+  color: #f2ea79;
+  bottom: 50px;
+  right: 100px;
+  animation: 6s linear infinite alternate mouv_haut2-3;
+  animation-delay: 1s;
+}
+
+.all .BG .BG-sec a:nth-child(2) {
+  color: #f2ce1b;
+  bottom: 50px;
+  left: 50%;
+    animation: 6s linear infinite alternate mouv_bas1;
+      animation-delay: 1s;
+}
+
+.all .BG .BG-sec a:nth-child(3) {
+  color: #f2ce1b;
+  bottom: 100px;
+  left: 0;
+  animation: 6s linear infinite alternate mouv_bas1-2;
+  animation-delay: 1s;
+}
+.all .BG .BG-sec a:nth-child(4) {
+  color: #f2ce1b;
+  top: 50px;
+  left: 100px;
+  animation: 6s linear infinite alternate mouv_bas1-3;
+  animation-delay: 1s;
+}
+
+.all .BD .BD-sec a:nth-child(2) {
+  color: #bf500f;
+  bottom: 50px;
+  right: 50%;
+  animation: 6s linear infinite alternate mouv_bas2;
+    animation-delay: 1s;
+}
+
+.all .BD .BD-sec a:nth-child(3) {
+  color: #bf500f;
+  bottom: 100px;
+  right: 0;
+  animation: 6s linear infinite alternate mouv_bas2-2;
+  animation-delay: 1s;
+}
+.all .BD .BD-sec a:nth-child(4) {
+  color: #bf500f;
+  top: 50px;
+  right: 100px;
+  animation: 6s linear infinite alternate mouv_bas2-3;
+  animation-delay: 1s;
+}
+
+
+
+
+/* -----SECTION FIN----- */
+
+section.tree {
+  height: 200px;
+  background-color: aqua;
+  display: flex;
+  flex-direction: row;
+  
+}
+.k {
+  background-color: black;
+}
